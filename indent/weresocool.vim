@@ -1,13 +1,13 @@
-setlocal indentexpr=WereSoCoolIndent()
+"setlocal indentexpr=WereSoCoolIndent()
 
-function! WereSoCoolIndent()
-  let line = getline(v:lnum)
-  let previousNum = prevnonblank(v:lnum - 1)
-  let previous = getline(previousNum)
+"function! WereSoCoolIndent()
+  "let line = getline(v:lnum)
+  "let previousNum = prevnonblank(v:lnum - 1)
+  "let previous = getline(previousNum)
 
-  if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
-    return indent(previousNum) + &tabstop
-  endif
+  "if previous =~ "{" && previous !~ "}" && line !~ "}" && line !~ ":$"
+    "return indent(previousNum) + &tabstop
+  "endif
 
-  ...
-endfunction
+  "...
+"endfunction
