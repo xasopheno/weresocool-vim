@@ -1,1 +1,1 @@
-autocmd BufNewFile,BufRead *.socool setfiletype socool
+autocmd BufNewFile,BufRead *.socool setfiletype weresocool
