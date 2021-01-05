@@ -1,4 +1,4 @@
-setlocal commentstring=--%s%s
+setlocal commentstring=--%s
 
 setlocal formatoptions-=t formatoptions+=croqnl
 " j was only added in 7.3.541, so stop complaints about its nonexistence
