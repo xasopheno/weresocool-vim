@@ -10,7 +10,8 @@ endif
 
 echom "Welcome to WereSoCool"
 syntax keyword wscKeyword AsIs Tm Ta PanM PanA Gain Length
-syntax keyword wscGroup Seq Overlay Sequence
+syntax keyword wscOverlay Overlay
+syntax keyword wscGroup Seq Sequence
 syntax keyword wscEffect ModulateBy FitLength Reverse Invert 
 syntax keyword wscO O
 syntax keyword wscRepeat Repeat
@@ -46,6 +47,7 @@ highlight def link WscCommentLine Comment
 highlight def link WscMain Main
 highlight def link WscComma Comma
 highlight def link WscRepeat Repeat
+highlight def link WscOverlay Group
 highlight def link WscGroup Group
 highlight def link WscEffect Effect
 highlight def link WscO O
@@ -68,17 +70,18 @@ highlight link wscO WscO
 highlight link wscZero WscZero
 
 highlight WscOperator guifg=#789816
-highlight WscKeyword guifg=#ef8168
-highlight WscStructure guifg=mediumaquamarine
+highlight WscKeyword guifg=#ef8168 gui=bold
+highlight WscStructure guifg=mediumaquamarine gui=bold
 highlight WscSpecialChar guifg=#ee8241
 highlight WscNumber guifg=cornsilk
 highlight WscBoolean guifg=#df7198
 highlight WscComment guifg=grey
-highlight WscMain guifg=deeppink
+highlight WscMain guifg=deeppinkg gui=bold
 highlight WscComma guifg=#C78AC7
-highlight WscRepeat guifg=steelblue
-highlight WscGroup guifg=#FFD866
-highlight WscEffect guifg=#ff6168
+highlight WscRepeat guifg=steelblue gui=bold
+highlight WscGroup guifg=#FFD866 gui=bold
+highlight WscOverlay guifg=orange gui=bold
+highlight WscEffect guifg=#ff6168 gui=bold
 highlight WscO guifg=#D54E53
 highlight WscZero guifg=wheat
 
