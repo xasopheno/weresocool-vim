@@ -78,9 +78,9 @@ highlight WscBoolean guifg=#df7198
 highlight WscComment guifg=grey
 highlight WscMain guifg=deeppinkg gui=bold
 highlight WscComma guifg=#C78AC7
-highlight WscRepeat guifg=steelblue gui=bold
+highlight WscRepeat guifg=skyblue gui=bold
 highlight WscGroup guifg=#FFD866 gui=bold
-highlight WscOverlay guifg=orange gui=bold
+highlight WscOverlay guifg=steelblue gui=bold
 highlight WscEffect guifg=#ff6168 gui=bold
 highlight WscO guifg=#D54E53
 highlight WscZero guifg=wheat

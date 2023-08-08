@@ -16,12 +16,16 @@ setlocal indentexpr=GetWereSoCoolIndent(v:lnum)
 
 " Enable auto-indenting on new lines
 setlocal autoindent
-" setlocal nosmartindent
 
 " Helper function to calculate indent
 function! GetWereSoCoolIndent(lnum)
     let l:prev_line = getline(a:lnum - 1)
     let l:curr_line = getline(a:lnum)
+
+    " Ignore lines that start with --
+    if l:prev_line =~ '^\s*--' || l:curr_line =~ '^\s*--'
+        return -1
+    endif
 
     " Increase indent after an opening brace or bracket
     if l:prev_line =~ '[{[]\s*$'
