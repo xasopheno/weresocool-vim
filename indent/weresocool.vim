@@ -128,11 +128,6 @@ endfunction
 
 augroup weresocool_autocmds
   autocmd!
-  " Preserve view & cursor when autoformatting on save
-  function! s:SocoolFormat() abort
-    let l:view = winsaveview()
-    silent keepjumps normal! gg=G
-    call winrestview(l:view)
-  endfunction
-  autocmd BufWritePre *.socool call <SID>SocoolFormat()
+  " Format with weresocool fmt on save
+  autocmd BufWritePre *.socool WereSoCoolFormat
 augroup END

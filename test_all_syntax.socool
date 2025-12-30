@@ -1,0 +1,344 @@
+-- ============================================================================
+-- WereSoCool Comprehensive Syntax Test File
+-- This file demonstrates ALL syntax features for testing highlighting
+-- ============================================================================
+
+-- Init block with all fields
+{ f: 311, l: 1, g: 1, p: 0, background_color: firebrick };
+
+-- ============================================================================
+-- BASIC OPERATIONS
+-- ============================================================================
+
+-- AsIs and Out
+basic_asis = { AsIs }
+basic_out = { Out }
+
+-- ============================================================================
+-- TRANSPOSE OPERATIONS (all aliases)
+-- ============================================================================
+
+-- Frequency transpose
+freq_tm = { Tm 3/2 }
+freq_fm = { Fm 5/4 }
+freq_ta = { Ta 100 }
+freq_fa = { Fa -50 }
+
+-- Pan operations
+pan_pm = { PanM 1/2 }
+pan_pa = { PanA 0.5 }
+pan_panm = { PanM -1/2 }
+pan_pana = { PanA -0.25 }
+
+-- Gain operations
+gain_gm = { Gm 1/2 }
+gain_full = { Gain 2 }
+
+-- Length operations
+len_lm = { Lm 2 }
+len_full = { Length 1/2 }
+
+-- ============================================================================
+-- OSCILLATORS
+-- ============================================================================
+
+osc_sine = { Sine }
+osc_sine_pow = { Sine 2 }
+osc_sine_multi = { Sine[1, 2, 3, 4] }
+
+osc_tri = { Triangle }
+osc_tri_alias = { Tri }
+osc_tri_pow = { Triangle 3 }
+
+osc_square = { Square }
+osc_pulse = { Pulse }
+osc_pulse_width = { Square 1/4 }
+
+osc_saw = { Saw }
+osc_noise = { Noise }
+
+osc_fmosc = { FMOsc[(1, 1/2), (2, 1/4), (3, 1/8)] }
+
+-- ============================================================================
+-- EFFECTS AND FILTERS
+-- ============================================================================
+
+fx_lowpass = { Lowpass 1000 2 }
+fx_highpass = { HighPass 200 1 }
+fx_bandpass = { BandPass 500 4 }
+
+fx_reverb = { Reverb 1/2 }
+fx_silence = { Silence 1 }
+fx_portamento = { Portamento 1/10 }
+
+-- Distortion effects
+fx_wavefolder = { Wavefolder(1/2, 3) }
+fx_softclip = { SoftClip(3/4) }
+fx_overdrive = { Overdrive(2) }
+fx_bitcrusher = { Bitcrusher(8) }
+fx_tanh = { Tanh(2) }
+
+-- ============================================================================
+-- ENVELOPE
+-- ============================================================================
+
+env_ad = { AD(1/10, 9/10, 1) }
+env_ad_long = { AD(1/4, 3/4, 2) }
+
+-- ============================================================================
+-- SEQUENCE AND OVERLAY
+-- ============================================================================
+
+seq_basic = { Seq[Tm 1, Tm 5/4, Tm 3/2] }
+seq_full = { Sequence[Fm 1, Fm 9/8, Fm 5/4] }
+
+ov_basic = { Overlay[Tm 1, Tm 3/2, Tm 2] }
+
+-- ============================================================================
+-- OVERTONES (O shorthand)
+-- ============================================================================
+
+overtones = {
+  O[
+    (1, 0, 1, 0),
+    (2, 0, 1/2, 0),
+    (3, 0, 1/3, 0),
+    (4, 0, 1/4, 0)
+  ]
+}
+
+-- Braced overtone syntax
+overtone_braced = { { 1, 0, 1, 0 } }
+
+-- ============================================================================
+-- MODULATION
+-- ============================================================================
+
+mod_basic = { ModulateBy[Tm 2] }
+mod_alias = { ModBy[Lm 1/2] }
+mod_output = { ModulateBy[Sine] -> [Fm 1] }
+
+fit_length = { FitLength Seq[Tm 1, Tm 2, Tm 3] }
+fit_gain = { AsIs > FitGain Overlay[Tm 1, Tm 2] }
+
+-- ============================================================================
+-- TRANSFORM OPERATIONS
+-- ============================================================================
+
+transform_reverse = { Reverse }
+transform_invert = { Invert }
+
+-- ============================================================================
+-- REPEAT
+-- ============================================================================
+
+repeat_basic = { Repeat 4 }
+repeat_long = { Repeat 16 }
+
+-- ============================================================================
+-- GENERATORS
+-- ============================================================================
+
+gen_basic = Gen(f: 1|1 [1, 2, 3, 4])
+gen_multi = Gen(f: 1|1 [1, 2], g: 1|1 [1, 1/2, 1/4])
+gen_take = Gen(f: 1|1 [1, 2, 3]) Take 8
+gen_seed = Gen(f: 1|1 [1, 2]) Seed 42
+
+-- Polynomial generator
+gen_poly = Gen(f: 1|1 Poly[1, 0, 1])
+
+-- Random coefficients
+gen_random_range = Gen(f: 1|1 [RR(1..5)])
+gen_random_choice = Gen(f: 1|1 [RC(1, 2, 3, 5, 8)])
+
+-- ============================================================================
+-- LISTS
+-- ============================================================================
+
+list_basic = List[Fm 1, Fm 5/4, Fm 3/2]
+list_alias = &[Fm 1, Fm 2]
+list_et = ET(12)
+list_indexed = <list_basic>@[0, 2]
+list_overlay_indexed = <list_basic>%[0, 1, 2]
+list_slice = <list_basic>@[1:3]
+list_random = <list_basic>@[Random(2)]
+
+-- ============================================================================
+-- COLORS
+-- ============================================================================
+
+-- Color arrays
+color_single = { Color[firebrick] }
+color_multi = { Color[oceanblue, coral, mintgreen] }
+color_hex = { Color[#ff5500, #00ff55, #5500ff] }
+
+-- Color operations
+color_hue = { Hue 30 }
+color_sat = { Saturation 1/2 }
+color_bright = { Brightness 3/2 }
+color_vibrance = { Vibrance 2 }
+color_gamma = { Gamma 2.2 }
+color_blend = { Blend firebrick 1/2 }
+color_add = { AddColor skyblue }
+color_gradient = { Gradient(1, 0, 0) }
+color_mix = { Mix 1/2 }
+
+-- Various color names (testing color highlighting)
+colors_test = {
+  Seq[
+    Color[red],
+    Color[blue],
+    Color[green],
+    Color[yellow],
+    Color[purple],
+    Color[orange],
+    Color[pink],
+    Color[cyan],
+    Color[magenta],
+    Color[white],
+    Color[black],
+    Color[grey],
+    Color[brown],
+    Color[gold],
+    Color[silver],
+    Color[coral],
+    Color[salmon],
+    Color[turquoise],
+    Color[indigo],
+    Color[violet],
+    Color[crimson],
+    Color[scarlet],
+    Color[maroon],
+    Color[navy],
+    Color[teal],
+    Color[olive],
+    Color[lime],
+    Color[aqua],
+    Color[fuchsia],
+    Color[lavender],
+    Color[plum],
+    Color[orchid],
+    Color[tan],
+    Color[beige],
+    Color[ivory],
+    Color[azure],
+    Color[khaki],
+    Color[peach],
+    Color[mint],
+    Color[rust],
+    Color[copper],
+    Color[bronze]
+  ]
+}
+
+-- ============================================================================
+-- CONTROL FLOW
+-- ============================================================================
+
+control_choose = { Choose[Fm 1, Fm 5/4, Fm 3/2] }
+
+-- Follow syntax
+control_follow = {
+  Follow {
+    F > 1 -> { 2, G },
+    G < 1/2 -> { F, 1 },
+    F == 1 && G > 0 -> { 1, 1 },
+    F > 1 || G < 0 -> { 1/2, 2 },
+    _ -> { 1, 1 }
+  }
+}
+
+-- ============================================================================
+-- IMPORT/EXTERNAL
+-- ============================================================================
+
+-- CSV import
+-- csv_1d = { Csv1d ../data/envelope.csv }
+-- csv_2d = { Csv2d(f: 1, g: 1) ../data/automation.csv }
+
+-- Sound import (commented - needs actual file)
+-- from_sound = { FromSound(4, 30) ../audio/sample.wav }
+-- from_yin = { FromSoundYin(60) ../audio/vocal.wav }
+
+-- MIDI output
+midi_single = { Midi(1) }
+midi_multi = { Midi[1, 2, 3] }
+
+-- Lambda
+lambda_basic = { Lambda { Fm 2 } }
+lambda_named = { Lambda(x) { x | Fm 2 } }
+
+-- ============================================================================
+-- FUNCTION DEFINITIONS
+-- ============================================================================
+
+-- Simple function
+simple_fn = { Fm 5/4 | Lm 1/2 }
+
+-- Function with parameters
+param_fn(mult, len) = { Fm mult | Lm len }
+
+-- Recursive-looking function usage
+use_fn = { param_fn(3/2, 2) }
+
+-- ============================================================================
+-- COMPOSITION (pipe operator)
+-- ============================================================================
+
+composed = {
+  Seq[Fm 1, Fm 5/4, Fm 3/2, Fm 2]
+  | Overlay[AsIs, Fm 2]
+  | Gain 1/2
+  | Reverb 1/4
+  | AD(1/10, 9/10, 1)
+}
+
+-- ============================================================================
+-- TAGGING AND KEEPERS
+-- ============================================================================
+
+tagged = { #my_tag }
+keeper = { $my_keeper }
+
+-- ============================================================================
+-- SHORTHAND SYNTAX
+-- ============================================================================
+
+-- Frequency ^ Length shorthand
+shorthand = { 3/2^1/2 }
+
+-- ============================================================================
+-- NUMBERS (various formats)
+-- ============================================================================
+
+numbers_test = {
+  Seq[
+    Fm 1,          -- integer
+    Fm 3/2,        -- rational
+    Fm 1.5,        -- float
+    Fm -1,         -- negative integer
+    Fm -3/2,       -- negative rational
+    Fm -1.5,       -- negative float
+    Fm 440,        -- large integer
+    Fm 1/1000      -- small rational
+  ]
+}
+
+-- ============================================================================
+-- COMMENTS
+-- ============================================================================
+
+-- This is a line comment
+-- Multiple line
+-- comments work too
+
+-- ============================================================================
+-- MAIN (entry point)
+-- ============================================================================
+
+main = {
+  composed
+  | Repeat 2
+  | Overlay[AsIs, Fm 2 | Gm 1/2]
+  | Lm 4
+}

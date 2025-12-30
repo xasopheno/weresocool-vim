@@ -19,7 +19,7 @@ function! s:WereSoCoolFormat() abort
   " Write to temp file and format
   let l:tmpfile = tempname() . '.socool'
   call writefile(getline(1, '$'), l:tmpfile)
-  let l:output = systemlist('weresocool fmt ' . shellescape(l:tmpfile))
+  let l:output = systemlist('weresocool fmt ' . shellescape(l:tmpfile) . ' 2>/dev/null')
   call delete(l:tmpfile)
 
   if v:shell_error != 0
